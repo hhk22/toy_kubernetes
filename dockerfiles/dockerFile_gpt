@@ -1,0 +1,11 @@
+FROM python:3.9
+
+RUN mkdir -p /api
+
+RUN pip install --no-cache-dir langchain langchain_core langchain_openai langchain-community pymysql cryptography
+
+WORKDIR /api
+ENV PYTHONUNBUFFERED=1
+COPY ./api/gpt.py ./gpt.py
+
+CMD ["python", "gpt.py"]
