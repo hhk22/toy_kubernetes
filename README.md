@@ -1,7 +1,7 @@
 
 ## Architecture
 
-![Architecture](https://github.com/hhk22/toy_kubernetes/images/k8s_architecture.png)
+![Architecture](https://github.com/hhk22/toy_kubernetes/blob/master/images/k8s_architecture.png)
 
 ## API 배포
 
