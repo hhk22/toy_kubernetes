@@ -1,4 +1,8 @@
 
+## Architecture
+
+![Architecture](https://github.com/hhk22/toy_kubernetes/images/k8s_architecture.png)
+
 ## API 배포
 
 Local서 다음과같이 Image를 빌드하고, 개인 dockerHub repo에 배포한다.  
