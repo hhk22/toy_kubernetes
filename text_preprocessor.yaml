@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: text-preprocessor
+  labels:
+    app: text-preprocessor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: text-preprocessor
+  template:
+    metadata:
+      labels:
+        app: text-preprocessor
+    spec:
+      containers:
+      - name: text-preprocessor
+        image: hyeonghwan/mini-project-text-preprocessor:latest
+        volumeMounts:
+        - name: nfs-vol
+          mountPath: /api/dynamic-vol
+      volumes:
+      - name: nfs-vol
+        nfs:
+          server: 192.168.1.10
+          path: /nfs_shared/dynamic-vol

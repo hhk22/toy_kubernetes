@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gpt
+  labels:
+    app: gpt
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gpt
+  template:
+    metadata:
+      labels:
+        app: gpt
+    spec:
+      containers:
+      - name: gpt
+        image: hyeonghwan/mini-project-gpt:latest
+        env:
+        - name: OPENAI_KEY
+          valueFrom:
+            secretKeyRef:
+              name: mysecret
+              key: OPENAI_KEY
+        volumeMounts:
+        - name: nfs-vol
+          mountPath: /api/dynamic-vol
+      volumes:
+      - name: nfs-vol
+        nfs:
+          server: 192.168.1.10
+          path: /nfs_shared/dynamic-vol
+---
